@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Colegio Los Robles de los Libertadores</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root{
+      --color-primario:#2a542a;
+      --color-secundario:#f3ecb2;
+      --color-acento:#6d5426;
+      --color-texto:#212109;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:var(--color-secundario);color:var(--color-texto)}
+    .container{width:95%;max-width:1100px;margin:0 auto}
+
+    /* Header */
+    header{background:var(--color-primario);padding:12px 0;box-shadow:0 2px 8px rgba(42,84,42,.05)}
+    .nav-flex{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .logo{height:60px;width:60px;border-radius:50%;background:#fff;border:3px solid var(--color-acento);display:inline-block}
+    nav ul{list-style:none;margin:0;padding:0;display:flex;gap:10px;flex-wrap:wrap}
+    nav a{display:inline-block;text-decoration:none;background:transparent;border:none;color:#fff;font-weight:700;
+      padding:8px 12px;border-radius:8px}
+    nav a:hover,nav a.active{background:var(--color-acento);color:#fffde2}
+
+    /* Hero */
+    .portada-hero{position:relative;width:100%;height:380px;display:grid;place-items:center;overflow:hidden}
+    .portada-hero::before{
+      content:"";position:absolute;inset:0;
+      background:linear-gradient(120deg,#234b23,#2a542a 45%,#6d5426);
+      filter:saturate(1.1);
+    }
+    .hero-content{position:relative;z-index:1;color:#fff;text-align:center;max-width:900px;
+      background:rgba(0,0,0,.35);padding:18px 24px;border-radius:14px}
+    .hero-content h1{margin:.2rem 0 0.4rem;font-size:clamp(24px,4vw,40px);line-height:1.2}
+    .hero-content p{margin:0;font-size:clamp(14px,2vw,18px)}
+
+    /* Secciones */
+    main{min-height:70vh}
+    .seccion{display:none;background:#fff;margin:30px auto 0;max-width:700px;padding:30px 24px;border-radius:16px;
+      box-shadow:0 2px 8px rgba(42,84,42,.07);animation:aparecer .6s}
+    .seccion.visible{display:block}
+    @keyframes aparecer{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+    /* Slider SIN imágenes (paneles de color) */
+    .slider{position:relative;max-width:700px;margin:10px auto 0;overflow:hidden;border-radius:12px;
+      box-shadow:0 2px 10px rgba(0,0,0,.08)}
+    .slide{display:none;min-height:260px;display:none;color:#fff;display:flex;align-items:center;justify-content:center;
+      font-size:28px;font-weight:700;user-select:none;position:relative;z-index:1}
+    .slide.active{display:flex}
+    .slide--1{background:linear-gradient(135deg,#1f4b2b,#2a542a)}
+    .slide--2{background:linear-gradient(135deg,#6d5426,#8a6b39)}
+    .slide--3{background:linear-gradient(135deg,#355e35,#2a542a)}
+    .ctrl{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.6);color:#fff;font-size:24px;
+      line-height:1;padding:10px 14px;border-radius:8px;cursor:pointer;z-index:10;user-select:none}
+    .ctrl:hover{background:rgba(0,0,0,.8)}
+    .prev{left:10px}
+    .next{right:10px}
+
+    /* Formulario */
+    .contacto-form{display:flex;flex-direction:column;gap:12px}
+    .contacto-form input,.contacto-form textarea{
+      padding:9px;font-size:1em;border:1.5px solid var(--color-primario);border-radius:7px;background:#f8f7f2;outline:none}
+    .contacto-form button{background:var(--color-primario);color:#fff;border:none;border-radius:8px;padding:10px 0;
+      font-size:1.05em;cursor:pointer}
+    .contacto-form button:hover{background:var(--color-acento)}
+
+    footer{background:var(--color-primario);color:#fff;text-align:center;padding:16px 0;border-radius:24px 24px 0 0;margin-top:30px}
+
+    @media (max-width:700px){
+      .nav-flex{flex-direction:column}
+      nav ul{justify-content:center}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container nav-flex">
+      <span class="logo" aria-label="Logo Colegio"></span>
+      <nav>
+        <ul>
+          <li><a href="#" class="nav-link active" data-section="inicio">Inicio</a></li>
+          <li><a href="#" class="nav-link" data-section="nosotros">¿Quiénes somos?</a></li>
+          <li><a href="#" class="nav-link" data-section="niveles">Niveles</a></li>
+          <li><a href="#" class="nav-link" data-section="noticias">Noticias</a></li>
+          <li><a href="#" class="nav-link" data-section="galeria">Galería</a></li>
+          <li><a href="#" class="nav-link" data-section="contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="portada-hero" aria-label="Portada del colegio">
+    <div class="hero-content">
+      <h1>Colegio Los Robles de los Libertadores</h1>
+      <p>Formando personas íntegras para el futuro.</p>
+    </div>
+  </section>
+
+  <!-- CONTENIDO -->
+  <main class="container">
+    <section id="inicio" class="seccion visible">
+      <h2>Bienvenidos</h2>
+      <p>Descubre nuestra propuesta educativa y el compromiso con la formación integral de nuestros estudiantes.</p>
+    </section>
+
+    <section id="nosotros" class="seccion">
+      <h2>¿Quiénes somos?</h2>
+      <p>Somos una institución educativa comprometida con la excelencia, los valores y el desarrollo integral de nuestros estudiantes, guiados por el respeto, la solidaridad y el trabajo colaborativo.</p>
+    </section>
+
+    <section id="niveles" class="seccion">
+      <h2>Niveles educativos</h2>
+      <ul>
+        <li><b>Educación Parvularia</b> (Pre-Kínder y Kínder)</li>
+        <li><b>Educación Básica</b> (1° a 8° Básico)</li>
+        <li><b>Enseñanza Media</b> (I° a IV° Medio)</li>
+      </ul>
+    </section>
+
+    <section id="noticias" class="seccion">
+      <h2>Últimas Noticias</h2>
+      <ul>
+        <li><b>15 de Julio:</b> Inicio de inscripciones para talleres deportivos.</li>
+        <li><b>10 de Julio:</b> Nueva biblioteca digital disponible para alumnos.</li>
+        <li><b>8 de Julio:</b> Premiación del concurso de ciencias.</li>
+      </ul>
+    </section>
+
+    <!-- SLIDER (sin imágenes) -->
+    <section id="galeria" class="seccion">
+      <h2>Galería</h2>
+      <div class="slider" id="slider">
+        <div class="slide slide--1 active">Panel 1</div>
+        <div class="slide slide--2">Panel 2</div>
+        <div class="slide slide--3">Panel 3</div>
+        <div class="ctrl prev" aria-label="Anterior" role="button" tabindex="0">⟨</div>
+        <div class="ctrl next" aria-label="Siguiente" role="button" tabindex="0">⟩</div>
+      </div>
+      <p style="margin-top:10px;font-size:14px;opacity:.8">
+        *Luego puedes reemplazar los paneles por <code>&lt;img&gt;</code> sin romper los botones.
+      </p>
+    </section>
+
+    <section id="contacto" class="seccion">
+      <h2>Contacto</h2>
+      <form class="contacto-form">
+        <input type="text" placeholder="Nombre" required />
+        <input type="email" placeholder="Correo electrónico" required />
+        <textarea placeholder="Mensaje" required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Colegio Los Robles de los Libertadores</p>
+    </div>
+  </footer>
+
+  <script>
+    // Navegación de secciones
+    document.querySelectorAll(".nav-link").forEach(link=>{
+      link.addEventListener("click", e=>{
+        e.preventDefault();
+        const id = link.dataset.section;
+        document.querySelectorAll(".nav-link").forEach(a=>a.classList.remove("active"));
+        link.classList.add("active");
+        document.querySelectorAll(".seccion").forEach(s=>s.classList.remove("visible"));
+        const target = document.getElementById(id);
+        if(target) target.classList.add("visible");
+      });
+    });
+
+    // Slider 
+    document.addEventListener("DOMContentLoaded", ()=>{
+      const slides = Array.from(document.querySelectorAll(".slide"));
+      const prev = document.querySelector(".prev");
+      const next = document.querySelector(".next");
+      let i = 0;
+
+      const show = n => slides.forEach((s,idx)=> s.classList.toggle("active", idx===n));
+      const goNext = ()=>{ i = (i+1) % slides.length; show(i); };
+      const goPrev = ()=>{ i = (i-1+slides.length) % slides.length; show(i); };
+
+      // Clicks
+      prev.addEventListener("click", goPrev);
+      next.addEventListener("click", goNext);
+
+      // Teclado accesible
+      [prev,next].forEach(btn=>{
+        btn.addEventListener("keydown", e=>{
+          if(e.key==="Enter" || e.key===" "){
+            e.preventDefault();
+            (btn===next?goNext:goPrev)();
+          }
+        });
+      });
+
+      show(i);
+      console.log("✅ Slider listo con", slides.length, "paneles");
+    });
+  </script>
+</body>
+</html>
